@@ -1,0 +1,16 @@
+services:
+    postgres:
+        image: postgres:16-alpine
+        container_name: todo_postgres
+        restart: unless-stopped
+        environment:
+            POSTGRES_DB: todo_db
+            POSTGRES_USER: todo_user
+            POSTGRES_PASSWORD: todo_secret
+        ports:
+            - "5433:5432"
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+
+volumes:
+    postgres_data:
